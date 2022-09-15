@@ -1,0 +1,56 @@
+# Enable loading of the scripting addon
+
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# Layout config
+
+yabai -m config layout bsp
+yabai -m config external_bar main:30:0
+
+# Window padding
+
+yabai -m config top_padding 	8
+yabai -m config bottom_padding 	8
+yabai -m config left_padding 	8
+yabai -m config right_padding	8
+yabai -m config window_gap 	8
+
+# Global settings
+
+yabai -m config mouse_follows_focus	     on
+yabai -m config window_border                off
+yabai -m config window_opacity 		     on
+yabai -m config window_shadow                on
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.9
+yabai -m config active_window_border_color   0xff008bff
+yabai -m config normal_window_border_color   0x01000000
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 on
+
+yabai -m config focus_follows_mouse autoraise
+
+# ---- Spaces config
+
+# Space 1 : terminals
+yabai -m rule --add app="iTerm2" space=1
+
+# Space 2 : web
+yabai -m rule --add app="Safari" space=^2
+
+# Space 3 : code / uni / work
+yabai -m rule --add app="Code" space=^3
+yabai -m rule --add app="Obsidian" space=^3
+yabai -m rule --add app="Notion" space=^3
+
+# Space 4 : Discord, slack etc
+yabai -m space 4 --layout stack
+yabai -m rule --add app="Discord" space=^4
+yabai -m rule --add app="Slack" space=^4
+yabai -m rule --add app="Messenger" space=^4
+
+# ---- Rules for applications
+
+yabai -m rule --add app="Systemvalg" manage=off
+yabai -m rule --add app="iTerm2" opacity=0.95
